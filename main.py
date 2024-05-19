@@ -2,11 +2,18 @@ import pprint
 from random import randint
 from math import sqrt
 
+# Read the file
 
 file_path = 'C:\\Users\\ata\\Downloads\\Telegram Desktop\\points.txt'
 
 
 class KMeans:
+    """
+    KMeans class to represent k-means clustering algorithm and filter file
+    input file path and kind of methode kmeans clustering and number of clusters
+    output a dictionary with kmeans clustering results and number of clusters
+    """
+
     def __init__(self, path_file, kind, k_in):
         self.path_file = path_file
         self.kind = kind
@@ -89,21 +96,22 @@ class KMeans:
         return clusters
 
 
-k_input = input("please enter a number for numbers of list sorting = ")
-while True:
-    try:
-        k_input = int(k_input)
-        break
-    except ValueError as error:
-        print("error, try again")
-        k_input = input("please enter a number for numbers of list sorting = ")
+if __name__ == '__main__':
+    k_input = input("please enter a number for numbers of list sorting = ")
+    while True:
+        try:
+            k_input = int(k_input)
+            break
+        except ValueError as error:
+            print("error, try again")
+            k_input = input("please enter a number for numbers of list sorting = ")
 
-kind_input = input(
-    "what method of distance would you like to use ? for menhattan enter m and for Euclidean enter e : \n")
-while kind_input.lower() not in ["e", "m"]:
-    kind_input = input("wrong !! enter again --> M or E : \n")
-kind = 0 if kind_input.lower() == 'e' else 1
+    kind_input = input(
+        "what method of distance would you like to use ? for menhattan enter m and for Euclidean enter e : \n")
+    while kind_input.lower() not in ["e", "m"]:
+        kind_input = input("wrong !! enter again --> M or E : \n")
+    kind = 0 if kind_input.lower() == 'e' else 1
 
-final_list = KMeans(file_path, kind, k_input)
+    final_list = KMeans(file_path, kind, k_input)
 
-pprint.pprint(final_list.center_appoint())
+    pprint.pprint(final_list.center_appoint())
